@@ -10,10 +10,10 @@ import time
 
 def generate_secret_number():
     """
-    Vygeneruje náhodné 4místné číslo s unikátními číslicemi (1-9).
+    Vygeneruje náhodné 4místné číslo s unikátními číslicemi (0-9).
     :return: string, tajné číslo
     """
-    digits = list("123456789")
+    digits = list("0123456789")
     random.shuffle(digits)
     secret_number = digits[:4]
     return "".join(secret_number)
@@ -63,6 +63,7 @@ def print_intro():
 def main():
     print_intro()
     secret_number = generate_secret_number()
+    print(f"Secret number (debug): {secret_number}")
     attempts = 0
     start_time = time.time()
 
