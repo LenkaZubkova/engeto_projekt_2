@@ -11,12 +11,15 @@ import time
 def generate_secret_number():
     """
     Vygeneruje náhodné 4místné číslo s unikátními číslicemi (0-9).
+    Pokud číslo začíná nulou, generuje znovu.
     :return: string, tajné číslo
     """
-    digits = list("0123456789")
-    random.shuffle(digits)
-    secret_number = digits[:4]
-    return "".join(secret_number)
+    while True:
+        digits = list("0123456789")
+        random.shuffle(digits)
+        secret_number = digits[:4]
+        if secret_number[0] != '0':
+            return "".join(secret_number)
 
 def is_valid_guess(guess):
     """
@@ -63,7 +66,6 @@ def print_intro():
 def main():
     print_intro()
     secret_number = generate_secret_number()
-    print(f"Secret number (debug): {secret_number}")
     attempts = 0
     start_time = time.time()
 
